@@ -6,13 +6,20 @@ const ArrayItem = ({ description }) => {
     { id: '1', trashIcon: false, fieldFilled: false }
   ]);
 
-  const onClickHandler = () => {
+  const addField = () => {
     setItems((prevState) => {
-      return [...prevState, { id: Date.now().toString(), trashIcon: true, fieldFilled: false }];
+      return [
+        ...prevState,
+        {
+          id: Date.now().toString(),
+          trashIcon: true,
+          fieldFilled: false
+        }
+      ];
     });
   };
 
-  const onDelete = (id) => {
+  const deleteField = (id) => {
     const index = items.findIndex((item) => item.id === id);
     setItems((prevState) => {
       return [
@@ -46,9 +53,11 @@ const ArrayItem = ({ description }) => {
     }
   };
 
-  let button = <button type="button" className="btn btn-outline-success" onClick={onClickHandler}>Добавить</button>;
+  let button = (
+    <button type="button" className="btn btn-outline-success" onClick={addField}>Добавить</button>
+  );
   if (items[items.length - 1].fieldFilled === false) {
-    button = <button disabled type="button" className="btn btn-outline-secondary" onClick={onClickHandler}>Добавить</button>;
+    button = <button disabled type="button" className="btn btn-outline-secondary" onClick={addField}>Добавить</button>;
   }
 
   return (
@@ -58,7 +67,7 @@ const ArrayItem = ({ description }) => {
         return (
           <TextField
             trashIcon={item.trashIcon}
-            onDelete={() => onDelete(item.id)}
+            onDelete={() => deleteField(item.id)}
             onFilled={onToggleFilled}
             key={item.id}
             id={item.id}
@@ -71,18 +80,6 @@ const ArrayItem = ({ description }) => {
 };
 
 const TextField = ({ trashIcon, onDelete, onFilled, id }) => {
-  if (trashIcon) {
-    return (
-      <div className="array-field-both">
-        <input
-          type="text"
-          className="form-control array-field__line"
-          onChange={(event) => onFilled(event.target.value, id)}
-        />
-        <i className="bi bi-trash icon-trash" onClick={onDelete} />
-      </div>
-    );
-  }
   return (
     <div className="array-field-both">
       <input
@@ -90,6 +87,7 @@ const TextField = ({ trashIcon, onDelete, onFilled, id }) => {
         className="form-control array-field__line"
         onChange={(event) => onFilled(event.target.value, id)}
       />
+      {trashIcon ? <i className="bi bi-trash icon-trash" onClick={onDelete} /> : null}
     </div>
   );
 };
