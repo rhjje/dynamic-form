@@ -1,0 +1,30 @@
+.array-field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.array-field-both {
+  display: flex;
+  justify-content: space-between;
+}
+
+.array-field__line {
+  width: 90%;
+}
+
+
+.form-label__array {
+  margin: 0;
+}
+.icon-trash {
+  font-size: 25px;
+  line-height: 36px;
+  width: 30px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.btn-outline-success, .btn-outline-secondary {
+  width: 100px;
+}
