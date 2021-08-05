@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './array-item.css';
 
-const ArrayItem = ({ description }) => {
+const ArrayItem = ({ description, register, formName }) => {
   const [items, setItems] = useState([
     { id: '1', trashIcon: false, fieldFilled: false }
   ]);
@@ -63,9 +63,12 @@ const ArrayItem = ({ description }) => {
   return (
     <div className="array-field wrapper">
       <legend className="form-label form-label__array">{description}</legend>
-      {items.map((item) => {
+      {items.map((item, i) => {
         return (
           <TextField
+            formName={formName}
+            register={register}
+            number={i}
             trashIcon={item.trashIcon}
             onDelete={() => deleteField(item.id)}
             onFilled={onToggleFilled}
@@ -79,10 +82,11 @@ const ArrayItem = ({ description }) => {
   );
 };
 
-const TextField = ({ trashIcon, onDelete, onFilled, id }) => {
+const TextField = ({ trashIcon, onDelete, onFilled, id, register, formName, number }) => {
   return (
     <div className="array-field-both">
       <input
+        {...register(`${formName}.${number}`)}
         type="text"
         className="form-control array-field__line"
         onChange={(event) => onFilled(event.target.value, id)}

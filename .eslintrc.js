@@ -38,7 +38,8 @@ module.exports = {
     "arrow-body-style": [0],
     "class-methods-use-this": [0],
     "no-underscore-dangle": [0],
-    "react-hooks/exhaustive-deps":[0]
+    "react-hooks/exhaustive-deps":[0],
+    "react/jsx-props-no-spreading": [0]
   },
   "parser": "babel-eslint"
 };
