@@ -1,6 +1,6 @@
 # dynamic-form  
 
-Demo: https://stupefied-yonath-9e3939.netlify.app  
+Demo: https://practical-wozniak-91992f.netlify.app  
 
 ## Available Scripts  
 
