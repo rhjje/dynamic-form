@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import './string-item.css';
 
 const StringItem = ({ label, register, errors, formName,
-  rules = { required: false, sizes: { min: 5, max: Infinity } }
+  rules = { required: false, sizes: { min: 1, max: Infinity } }
 }) => {
   const { required, sizes: { min, max } } = rules;
   let warning = '';

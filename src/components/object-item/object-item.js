@@ -23,9 +23,10 @@ const ObjectItem = ({ items, description = '', register, formName, errors }) => 
         if (items[item].type === 'array') {
           return (
             <ArrayItem
+              rules={items[item].rules}
+              errors={errors}
               register={register}
               formName={`${formName}.${item}`}
-              items={items[item].items}
               description={items[item].description}
               key={items[item].description}
             />

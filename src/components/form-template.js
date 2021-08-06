@@ -7,14 +7,7 @@ const FORM_TEMPLATE = {
     },
     LastName: {
       type: 'string',
-      description: 'Фамилия',
-      rules: {
-        required: true,
-        sizes: {
-          min: 5,
-          max: 10
-        }
-      }
+      description: 'Фамилия'
     },
     Patronymic: {
       type: 'string',
@@ -30,14 +23,7 @@ const FORM_TEMPLATE = {
           items: {
             City: {
               type: 'string',
-              description: 'Город',
-              rules: {
-                required: true,
-                sizes: {
-                  min: 5,
-                  max: 10
-                }
-              }
+              description: 'Город'
             },
             Street: {
               type: 'string',

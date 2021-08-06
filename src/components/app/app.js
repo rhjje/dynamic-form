@@ -13,13 +13,34 @@ const App = () => {
   const [data, setData] = useState(FORM_TEMPLATE);
   const { DocumentName, items } = data;
 
+  function formattingData(object) {
+    const newObj = JSON.parse(JSON.stringify(object));
+    function getProp(obj) {
+      for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+          if (typeof obj[key] === 'object') {
+            getProp(obj[key]);
+          }
+          if (obj[key] === '') {
+            obj[key] = null;
+          }
+        }
+      }
+    }
+
+    getProp(newObj);
+    return newObj;
+  }
+
   const onSubmitHandler = (value) => {
+    const formattingValue = formattingData(value);
     const postData = {
       DocumentName,
-      items: value
+      items: formattingValue
     };
     console.log(postData);
   };
+
   return (
     <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
       <legend>{DocumentName}</legend>
@@ -39,6 +60,7 @@ const App = () => {
         if (items[item].type === 'array') {
           return (
             <ArrayItem
+              errors={errors}
               register={register}
               formName={item}
               items={items[item].items}
