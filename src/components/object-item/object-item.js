@@ -5,7 +5,7 @@ import './object-item.css';
 
 const ObjectItem = ({ description, register, formName, errors, items }) => {
   return (
-    <div className="wrapper">
+    <div className={description ? 'wrapper' : 'form-container'}>
       {description ? <legend>{description}</legend> : null}
       {Object.keys(items).map((item) => {
         if (items[item].type === 'string') {
@@ -13,7 +13,7 @@ const ObjectItem = ({ description, register, formName, errors, items }) => {
             <StringItem
               description={items[item].description}
               register={register}
-              formName={`${formName}.${item}`}
+              formName={description ? `${formName}.${item}` : item}
               errors={errors}
               rules={items[item].rules}
               key={items[item].description}
@@ -25,7 +25,7 @@ const ObjectItem = ({ description, register, formName, errors, items }) => {
             <ArrayItem
               description={items[item].description}
               register={register}
-              formName={`${formName}.${item}`}
+              formName={description ? `${formName}.${item}` : item}
               errors={errors}
               rules={items[item].rules}
               items={items[item].items.rules}
@@ -38,7 +38,7 @@ const ObjectItem = ({ description, register, formName, errors, items }) => {
             <ObjectItem
               description={items[item].description}
               register={register}
-              formName={`${formName}.${item}`}
+              formName={description ? `${formName}.${item}` : item}
               errors={errors}
               items={items[item].items}
               key={items[item].description}

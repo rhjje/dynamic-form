@@ -1,7 +1,14 @@
+.wrapper .array-field {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
 .array-field {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  background-color: white;
+  padding: 10px 0;
 }
 
 .array-field-both {

@@ -61,24 +61,8 @@ const ArrayItem = ({
     }
   };
 
-  let button = (
-    <input
-      type="button"
-      value="Добавить"
-      className={fields[fields.length - 1].fieldFilled
-        ? 'btn btn-outline-success'
-        : 'btn btn-outline-secondary'}
-      disabled={!fields[fields.length - 1].fieldFilled}
-      onClick={addField}
-    />
-  );
-
-  if (fields.length >= max) {
-    button = null;
-  }
-
   return (
-    <div className="array-field wrapper">
+    <div className="array-field">
       <legend className="form-label form-label__array">{description}</legend>
       {fields.map((item, i) => {
         return (
@@ -97,7 +81,17 @@ const ArrayItem = ({
           />
         );
       })}
-      {button}
+      {fields.length < max ? (
+        <input
+          type="button"
+          value="Добавить"
+          className={fields[fields.length - 1].fieldFilled
+            ? 'btn btn-outline-success'
+            : 'btn btn-outline-secondary'}
+          disabled={!fields[fields.length - 1].fieldFilled}
+          onClick={addField}
+        />
+      ) : null}
     </div>
   );
 };

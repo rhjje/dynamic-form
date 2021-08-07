@@ -1,13 +1,13 @@
 const FORM_TEMPLATE = {
   DocumentName: 'Прекрасный документ',
   items: {
-    Name: {
-      type: 'string',
-      description: 'Имя'
-    },
     LastName: {
       type: 'string',
       description: 'Фамилия'
+    },
+    Name: {
+      type: 'string',
+      description: 'Имя'
     },
     Patronymic: {
       type: 'string',

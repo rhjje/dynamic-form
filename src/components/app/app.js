@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import ObjectItem from '../object-item/object-item';
-import ArrayItem from '../array-item/array-item';
-import StringItem from '../string-item/string-item';
 import './app.css';
-
 import FORM_TEMPLATE from '../form-template';
 
 const App = () => {
@@ -48,46 +44,11 @@ const App = () => {
   return (
     <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
       <legend>{DocumentName}</legend>
-      {Object.keys(items).map((item) => {
-        if (items[item].type === 'string') {
-          return (
-            <StringItem
-              description={items[item].description}
-              register={register}
-              formName={item}
-              errors={errors}
-              rules={items[item].rules}
-              key={items[item].description}
-            />
-          );
-        }
-        if (items[item].type === 'array') {
-          return (
-            <ArrayItem
-              description={items[item].description}
-              register={register}
-              formName={item}
-              errors={errors}
-              rules={items[item].rules}
-              items={items[item].items.rules}
-              key={items[item].description}
-            />
-          );
-        }
-        if (items[item].type === 'object') {
-          return (
-            <ObjectItem
-              description={items[item].description}
-              register={register}
-              formName={item}
-              errors={errors}
-              items={items[item].items}
-              key={items[item].description}
-            />
-          );
-        }
-        return null;
-      })}
+      <ObjectItem
+        items={items}
+        register={register}
+        errors={errors}
+      />
       <input type="submit" value="Отправить" className="btn btn-success" />
     </form>
   );
