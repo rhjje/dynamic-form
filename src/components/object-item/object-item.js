@@ -1,9 +1,9 @@
 import React from 'react';
-import StringItem from '../string-item/string-item';
 import ArrayItem from '../array-item/array-item';
+import StringItem from '../string-item/string-item';
 import './object-item.css';
 
-const ObjectItem = ({ items, description = '', register, formName, errors }) => {
+const ObjectItem = ({ description, register, formName, errors, items }) => {
   return (
     <div className="wrapper">
       {description ? <legend>{description}</legend> : null}
@@ -11,11 +11,11 @@ const ObjectItem = ({ items, description = '', register, formName, errors }) => 
         if (items[item].type === 'string') {
           return (
             <StringItem
-              rules={items[item].rules}
-              errors={errors}
+              description={items[item].description}
               register={register}
               formName={`${formName}.${item}`}
-              label={items[item].description}
+              errors={errors}
+              rules={items[item].rules}
               key={items[item].description}
             />
           );
@@ -23,11 +23,12 @@ const ObjectItem = ({ items, description = '', register, formName, errors }) => 
         if (items[item].type === 'array') {
           return (
             <ArrayItem
-              rules={items[item].rules}
-              errors={errors}
+              description={items[item].description}
               register={register}
               formName={`${formName}.${item}`}
-              description={items[item].description}
+              errors={errors}
+              rules={items[item].rules}
+              items={items[item].items.rules}
               key={items[item].description}
             />
           );
@@ -35,11 +36,11 @@ const ObjectItem = ({ items, description = '', register, formName, errors }) => 
         if (items[item].type === 'object') {
           return (
             <ObjectItem
-              errors={errors}
+              description={items[item].description}
               register={register}
               formName={`${formName}.${item}`}
+              errors={errors}
               items={items[item].items}
-              description={items[item].description}
               key={items[item].description}
             />
           );

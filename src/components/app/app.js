@@ -13,11 +13,15 @@ const App = () => {
   const [data, setData] = useState(FORM_TEMPLATE);
   const { DocumentName, items } = data;
 
-  function formattingData(object) {
+  const formattingData = (object) => {
     const newObj = JSON.parse(JSON.stringify(object));
-    function getProp(obj) {
+    const getProp = (obj) => {
       for (const key in obj) {
         if (Object.hasOwnProperty.call(obj, key)) {
+          if (Array.isArray(obj[key])) {
+            const arr = obj[key].filter(Boolean);
+            obj[key] = arr;
+          }
           if (typeof obj[key] === 'object') {
             getProp(obj[key]);
           }
@@ -26,11 +30,11 @@ const App = () => {
           }
         }
       }
-    }
+    };
 
     getProp(newObj);
     return newObj;
-  }
+  };
 
   const onSubmitHandler = (value) => {
     const formattingValue = formattingData(value);
@@ -48,11 +52,11 @@ const App = () => {
         if (items[item].type === 'string') {
           return (
             <StringItem
-              errors={errors}
-              rules={items[item].rules}
+              description={items[item].description}
               register={register}
               formName={item}
-              label={items[item].description}
+              errors={errors}
+              rules={items[item].rules}
               key={items[item].description}
             />
           );
@@ -60,11 +64,12 @@ const App = () => {
         if (items[item].type === 'array') {
           return (
             <ArrayItem
-              errors={errors}
+              description={items[item].description}
               register={register}
               formName={item}
-              items={items[item].items}
-              description={items[item].description}
+              errors={errors}
+              rules={items[item].rules}
+              items={items[item].items.rules}
               key={items[item].description}
             />
           );
@@ -72,18 +77,18 @@ const App = () => {
         if (items[item].type === 'object') {
           return (
             <ObjectItem
-              errors={errors}
+              description={items[item].description}
               register={register}
               formName={item}
+              errors={errors}
               items={items[item].items}
-              description={items[item].description}
               key={items[item].description}
             />
           );
         }
         return null;
       })}
-      <input type="submit" className="btn btn-success" />
+      <input type="submit" value="Отправить" className="btn btn-success" />
     </form>
   );
 };
