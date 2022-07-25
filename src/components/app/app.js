@@ -5,7 +5,12 @@ import './app.css';
 import FORM_TEMPLATE from '../form-template';
 
 const App = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(FORM_TEMPLATE);
   const { DocumentName, items } = data;
 
@@ -36,19 +41,17 @@ const App = () => {
     const formattingValue = formattingData(value);
     const postData = {
       DocumentName,
-      items: formattingValue
+      items: formattingValue,
     };
+
+    // eslint-disable-next-line no-console
     console.log(postData);
   };
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
       <legend>{DocumentName}</legend>
-      <ObjectItem
-        items={items}
-        register={register}
-        errors={errors}
-      />
+      <ObjectItem items={items} register={register} errors={errors} />
       <input type="submit" value="Отправить" className="btn btn-success" />
     </form>
   );

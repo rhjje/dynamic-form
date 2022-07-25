@@ -1,17 +1,17 @@
 module.exports = {
-  extends: "react-app",
-  plugins: ["eslint-plugin-import", "prettier"],
+  extends: 'react-app',
+  plugins: ['eslint-plugin-import', 'prettier'],
   rules: {
-    "no-console": [
-      "warn",
+    'no-console': [
+      'warn',
       {
-        allow: ["warn", "error"],
+        allow: ['warn', 'error'],
       },
     ],
-    "prettier/prettier": [
-      "warn",
+    'prettier/prettier': [
+      'warn',
       {
-        endOfLine: "auto",
+        endOfLine: 'auto',
       },
     ],
   },
