@@ -1,14 +1,33 @@
 import React from 'react';
 import { get } from 'lodash';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 import './string-item.css';
 
-const StringItem = ({
+interface Sizes {
+  min: number;
+  max: number;
+}
+
+interface Rules {
+  required: boolean;
+  sizes: Sizes;
+}
+
+interface StringItemProps {
+  description: string;
+  register: UseFormRegister<FieldValues>;
+  formName: string;
+  errors: FieldErrors;
+  rules: Rules;
+}
+
+export const StringItem = ({
   description,
   register,
   formName,
   errors,
   rules = { required: false, sizes: { min: 1, max: Infinity } },
-}) => {
+}: StringItemProps) => {
   const {
     required,
     sizes: { min, max },
@@ -40,9 +59,7 @@ const StringItem = ({
           },
         })}
       />
-      {get(errors, formName) && <p>{get(errors, formName).message}</p>}
+      {get(errors, formName) && <p>{get({}, formName).message}</p>}
     </div>
   );
 };
-
-export default StringItem;

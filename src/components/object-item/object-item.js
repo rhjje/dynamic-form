@@ -1,6 +1,6 @@
 import React from 'react';
 import ArrayItem from '../array-item/array-item';
-import StringItem from '../string-item/string-item';
+import { StringItem } from '../string-item/string-item';
 import './object-item.css';
 
 const ObjectItem = ({ description, register, formName, errors, items }) => {
