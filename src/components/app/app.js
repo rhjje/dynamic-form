@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import ObjectItem from '../object-item/object-item';
+import { ObjectItem } from '../object-item/object-item';
 import { FORM_TEMPLATE } from '../form-template';
 import './app.css';
 

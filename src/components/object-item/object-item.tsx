@@ -1,9 +1,24 @@
 import React from 'react';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 import ArrayItem from '../array-item/array-item';
 import { StringItem } from '../string-item/string-item';
 import './object-item.css';
 
-const ObjectItem = ({ description, register, formName, errors, items }) => {
+interface ObjectItemProps {
+  description: string;
+  register: UseFormRegister<FieldValues>;
+  formName: string;
+  errors: FieldErrors;
+  items: Record<string, any>;
+}
+
+export const ObjectItem = ({
+  description,
+  register,
+  formName,
+  errors,
+  items,
+}: ObjectItemProps) => {
   return (
     <div className={description ? 'wrapper' : 'form-container'}>
       {description ? <legend>{description}</legend> : null}
@@ -50,5 +65,3 @@ const ObjectItem = ({ description, register, formName, errors, items }) => {
     </div>
   );
 };
-
-export default ObjectItem;
