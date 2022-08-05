@@ -1,9 +1,10 @@
-const FORM_TEMPLATE = {
+export const FORM_TEMPLATE = {
   DocumentName: 'Прекрасный документ',
   items: {
     LastName: {
       type: 'string',
       description: 'Фамилия',
+      rules: { required: true, sizes: { min: 2, max: 50 } },
     },
     Name: {
       type: 'string',
@@ -46,5 +47,3 @@ const FORM_TEMPLATE = {
     },
   },
 };
-
-export default FORM_TEMPLATE;

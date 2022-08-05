@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import ObjectItem from '../object-item/object-item';
+import { FORM_TEMPLATE } from '../form-template';
 import './app.css';
-import FORM_TEMPLATE from '../form-template';
 
-const App = () => {
+export const App = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // eslint-disable-next-line no-unused-vars
-  const [data, setData] = useState(FORM_TEMPLATE);
-  const { DocumentName, items } = data;
+  const { DocumentName, items } = FORM_TEMPLATE;
 
   const formattingData = (object) => {
     const newObj = JSON.parse(JSON.stringify(object));
@@ -56,5 +54,3 @@ const App = () => {
     </form>
   );
 };
-
-export default App;
