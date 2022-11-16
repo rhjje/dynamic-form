@@ -1,65 +1,33 @@
 import React from 'react';
+import classNames from 'classnames';
 import { get } from 'lodash';
-import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
+import { Form } from 'react-bootstrap';
 import './string-item.css';
 
-interface Sizes {
-  min: number;
-  max: number;
-}
-
-interface Rules {
-  required: boolean;
-  sizes: Sizes;
-}
-
-interface StringItemProps {
+type StringItemProps = {
   description: string;
-  register: UseFormRegister<FieldValues>;
-  formName: string;
-  errors: FieldErrors;
-  rules: Rules;
-}
+  name: string;
+};
 
-export const StringItem = ({
-  description,
-  register,
-  formName,
-  errors,
-  rules = { required: false, sizes: { min: 1, max: Infinity } },
-}: StringItemProps) => {
+export const StringItem = ({ description, name }: StringItemProps) => {
   const {
-    required,
-    sizes: { min, max },
-  } = rules;
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
-    <div className="mb-3">
-      <label htmlFor={description} className="form-label">
+    <Form.Group>
+      <Form.Label htmlFor={description} className="form-label">
         {description}
-      </label>
-      <input
+      </Form.Label>
+      <Form.Control
         type="text"
-        className={
-          get(errors, formName) ? 'form-control warning' : 'form-control'
-        }
+        className={classNames('form-control', errors[name] && 'warning')}
         id={description}
-        {...register(formName, {
-          required: {
-            value: required,
-            message: 'Это поле обязательно для заполнения',
-          },
-          minLength: {
-            value: min,
-            message: `Слишком мало символов. Должно быть ≥ ${min}`,
-          },
-          maxLength: {
-            value: max,
-            message: `Слишком много символов. Должно быть меньше ${max}`,
-          },
-        })}
+        {...register(name)}
       />
-      {get(errors, formName) && <p>{get({}, formName).message}</p>}
-    </div>
+      {get(errors, name) && <p>{get({}, name).message}</p>}
+    </Form.Group>
   );
 };

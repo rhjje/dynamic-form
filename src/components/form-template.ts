@@ -1,10 +1,10 @@
 export const FORM_TEMPLATE = {
-  DocumentName: 'Прекрасный документ',
+  documentName: 'Прекрасный документ',
   items: {
     LastName: {
       type: 'string',
       description: 'Фамилия',
-      rules: { required: true, sizes: { min: 2, max: 50 } },
+      rules: { required: true, length: { min: 2, max: 50 } },
     },
     Name: {
       type: 'string',
