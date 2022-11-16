@@ -15,12 +15,14 @@ export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
     <div className={description ? 'wrapper' : 'form-container'}>
       {description && <legend>{description}</legend>}
       {Object.keys(items).map((keyOfItems) => {
+        const fieldName = description ? `${name}.${keyOfItems}` : keyOfItems;
+
         if (items[keyOfItems].type === FieldEnum.String) {
           return (
             <StringItem
               description={items[keyOfItems].description}
-              name={description ? `${name}.${keyOfItems}` : keyOfItems}
-              key={description ? `${name}.${keyOfItems}` : keyOfItems}
+              name={fieldName}
+              key={fieldName}
             />
           );
         }
@@ -37,18 +39,16 @@ export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
         //     />
         //   );
         // }
-        // if (items[item].type === 'object') {
-        //   return (
-        //     <ObjectItem
-        //       description={items[item].description}
-        //       register={register}
-        //       formName={description ? `${formName}.${item}` : item}
-        //       errors={errors}
-        //       items={items[item].items}
-        //       key={items[item].description}
-        //     />
-        //   );
-        // }
+        if (items[keyOfItems].type === FieldEnum.Object) {
+          return (
+            <ObjectItem
+              items={(items[keyOfItems] as ObjectType).items}
+              description={items[keyOfItems].description}
+              name={fieldName}
+              key={fieldName}
+            />
+          );
+        }
         return null;
       })}
     </div>
