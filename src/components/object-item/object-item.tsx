@@ -1,5 +1,5 @@
 import React from 'react';
-// import ArrayItem from '../array-item/array-item';
+import { ArrayItem } from 'components/array-item/array-item';
 import { StringType, ArrayType, ObjectType, FieldEnum } from 'types/types';
 import { StringItem } from '../string-item/string-item';
 import './object-item.css';
@@ -11,9 +11,12 @@ interface ObjectItemProps {
 }
 
 export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
+  const Wrapper = description ? 'fieldset' : React.Fragment;
+
   return (
-    <div className={description ? 'wrapper' : 'form-container'}>
+    <Wrapper className={description && 'object-item fieldset'}>
       {description && <legend>{description}</legend>}
+
       {Object.keys(items).map((keyOfItems) => {
         const fieldName = description ? `${name}.${keyOfItems}` : keyOfItems;
 
@@ -26,19 +29,18 @@ export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
             />
           );
         }
-        // if (items[item].type === 'array') {
-        //   return (
-        //     <ArrayItem
-        //       description={items[item].description}
-        //       register={register}
-        //       formName={description ? `${formName}.${item}` : item}
-        //       errors={errors}
-        //       rules={items[item].rules}
-        //       items={items[item].items.rules}
-        //       key={items[item].description}
-        //     />
-        //   );
-        // }
+
+        if (items[keyOfItems].type === 'array') {
+          return (
+            <ArrayItem
+              description={items[keyOfItems].description}
+              name={fieldName}
+              rules={(items[keyOfItems] as ArrayType).rules}
+              key={fieldName}
+            />
+          );
+        }
+
         if (items[keyOfItems].type === FieldEnum.Object) {
           return (
             <ObjectItem
@@ -49,8 +51,9 @@ export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
             />
           );
         }
+
         return null;
       })}
-    </div>
+    </Wrapper>
   );
 };

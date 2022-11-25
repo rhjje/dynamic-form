@@ -2,13 +2,16 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { ObjectItem } from '../object-item/object-item';
 import { FORM_TEMPLATE } from '../form-template';
 import { OptionalType } from 'types/types';
+import { setDefaultValues } from 'utils/setDefaultValues';
 import { Button } from 'react-bootstrap';
 import './app.css';
 
 type FormSсheme = OptionalType<typeof FORM_TEMPLATE>;
 
 export const App = () => {
-  const methods = useForm<FormSсheme>();
+  const methods = useForm<FormSсheme>({
+    defaultValues: setDefaultValues(FORM_TEMPLATE.items),
+  });
   const { handleSubmit } = methods;
 
   const { documentName, items } = FORM_TEMPLATE;
@@ -51,8 +54,10 @@ export const App = () => {
     <FormProvider {...methods}>
       <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
         <legend>{documentName}</legend>
-        <ObjectItem items={items} />
-        <Button variant="success" type="submit">
+        <fieldset className="fieldset">
+          <ObjectItem items={items} />
+        </fieldset>
+        <Button className="submit-btn" variant="success" type="submit">
           Отправить
         </Button>
       </form>

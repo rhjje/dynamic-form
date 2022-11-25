@@ -26,9 +26,7 @@ export type StringType = {
 export type ArrayType = {
   type: string;
   description: string;
-  items: {
-    type: ValidationType['type'];
-  };
+  rules?: ValidationType;
 };
 
 export type ObjectType = {

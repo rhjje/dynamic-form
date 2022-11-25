@@ -39,9 +39,6 @@ export const FORM_TEMPLATE = {
         Phones: {
           type: 'array',
           description: 'Телефоны',
-          items: {
-            type: 'string',
-          },
         },
       },
     },

@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  margin-bottom: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -13,6 +14,10 @@
   width: 600px;
 }
 
-.btn-success {
+.fieldset > *:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.submit-btn {
   margin-top: 20px;
 }

@@ -1,3 +1,11 @@
+.string-item-wrapper {
+  width: 100%;
+}
+
+.string-item {
+  width: 100%;
+}
+
 .warning {
   border-color: red;
 }

@@ -6,24 +6,26 @@ import { Form } from 'react-bootstrap';
 import './string-item.css';
 
 type StringItemProps = {
-  description: string;
   name: string;
+  description?: string;
 };
 
-export const StringItem = ({ description, name }: StringItemProps) => {
+export const StringItem = ({ name, description }: StringItemProps) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
   return (
-    <Form.Group>
-      <Form.Label htmlFor={description} className="form-label">
-        {description}
-      </Form.Label>
+    <Form.Group className="string-item-wrapper">
+      {description && (
+        <Form.Label htmlFor={description} className="form-label">
+          {description}
+        </Form.Label>
+      )}
       <Form.Control
         type="text"
-        className={classNames('form-control', errors[name] && 'warning')}
+        className={classNames('string-item', errors[name] && 'warning')}
         id={description}
         {...register(name)}
       />

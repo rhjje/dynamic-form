@@ -1,37 +1,19 @@
-.wrapper .array-field {
-  padding: 10px 20px;
+.object-item .array-field {
+  padding: 10px 20px 20px;
   border-radius: 5px;
 }
 
 .array-field {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
   background-color: white;
   padding: 10px 0;
 }
 
-.array-field-both {
+.array-field__item {
   display: flex;
+  column-gap: 8px;
   justify-content: space-between;
 }
 
-.array-field__line {
-  width: 90%;
-}
-
-
-.form-label__array {
-  margin: 0;
-}
-.icon-trash {
-  font-size: 25px;
-  line-height: 36px;
-  width: 30px;
-  height: 36px;
-  cursor: pointer;
-}
-
-.btn-outline-success, .btn-outline-secondary {
-  width: 100px;
+.array-btn {
+  margin-top: 8px;
 }
