@@ -1,0 +1,7 @@
+.fieldset > *:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+}

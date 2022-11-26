@@ -10,14 +10,6 @@
   justify-content: center;
 }
 
-.form {
+.app {
   width: 600px;
-}
-
-.fieldset > *:not(:last-child) {
-  margin-bottom: 12px;
-}
-
-.submit-btn {
-  margin-top: 20px;
 }

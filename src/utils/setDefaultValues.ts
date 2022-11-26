@@ -1,9 +1,15 @@
-import { StringType, ArrayType, ObjectType, FieldEnum } from 'types/types';
+import {
+  StringType,
+  ArrayType,
+  ObjectType,
+  FieldEnum,
+  DefaultValuesSchemeType,
+} from 'types/types';
 
 type SchemeType = Record<string, StringType | ArrayType | ObjectType>;
 
 export const setDefaultValues = (scheme: SchemeType) => {
-  function setValue(scheme: SchemeType, newScheme: Record<string, any>) {
+  function setValue(scheme: SchemeType, newScheme: DefaultValuesSchemeType) {
     for (const key in scheme) {
       if (Object.hasOwnProperty.call(scheme, key)) {
         if (scheme[key].type === FieldEnum.String) {

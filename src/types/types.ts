@@ -34,3 +34,5 @@ export type ObjectType = {
   description: string;
   items: Record<string, StringType | ArrayType>;
 };
+
+export type DefaultValuesSchemeType = Record<string, any>;

@@ -12,9 +12,10 @@ interface ObjectItemProps {
 
 export const ObjectItem = ({ items, description, name }: ObjectItemProps) => {
   const Wrapper = description ? 'fieldset' : React.Fragment;
+  const className = description ? { className: 'object-item fieldset' } : {};
 
   return (
-    <Wrapper className={description && 'object-item fieldset'}>
+    <Wrapper {...className}>
       {description && <legend>{description}</legend>}
 
       {Object.keys(items).map((keyOfItems) => {
