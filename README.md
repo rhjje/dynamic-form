@@ -1,14 +1,14 @@
-# dynamic-form  
+# dynamic-form
 
-Demo: https://silly-neumann-e97c70.netlify.app  
+Demo: https://dynamic-form-rhjje.netlify.app/
 
-## Available Scripts  
+## Available Scripts
 
-` $ npm  run start `  
+`$ npm run start`
 
-Runs the app in the development mode.   
-Open http://localhost:3000 to view it in the browser.  
+Runs the app in the development mode.  
+Open http://localhost:3000 to view it in the browser.
 
-` $ npm  run build `  
+`$ npm run build`
 
-Builds the app for production to the ` build ` folder. 
+Builds the app for production to the `build` folder.
