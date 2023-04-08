@@ -4,11 +4,12 @@ export const FORM_TEMPLATE = {
     lastName: {
       type: 'string',
       description: 'Фамилия',
-      rules: { required: true, length: { min: 2, max: 50 } },
+      rules: { required: true, length: { min: 3, max: 50 } },
     },
     name: {
       type: 'string',
       description: 'Имя',
+      rules: { required: true, length: { min: 2, max: 50 } },
     },
     patronymic: {
       type: 'string',
@@ -25,14 +26,17 @@ export const FORM_TEMPLATE = {
             city: {
               type: 'string',
               description: 'Город',
+              rules: { required: true },
             },
             street: {
               type: 'string',
               description: 'Улица',
+              rules: { required: true },
             },
             house: {
               type: 'string',
               description: 'Дом',
+              rules: { required: true },
             },
           },
         },

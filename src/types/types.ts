@@ -14,7 +14,7 @@ export type ValidationType = {
     min?: number;
     max?: number;
   };
-  type?: 'text' | 'number';
+  type?: 'text' | 'email';
 };
 
 export type StringType = {
@@ -36,3 +36,4 @@ export type ObjectType = {
 };
 
 export type DefaultValuesSchemeType = Record<string, any>;
+export type SchemeType = Record<string, StringType | ArrayType | ObjectType>;

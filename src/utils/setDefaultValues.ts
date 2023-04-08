@@ -1,12 +1,9 @@
 import {
-  StringType,
-  ArrayType,
   ObjectType,
   FieldEnum,
+  SchemeType,
   DefaultValuesSchemeType,
 } from 'types/types';
-
-type SchemeType = Record<string, StringType | ArrayType | ObjectType>;
 
 export const setDefaultValues = (scheme: SchemeType) => {
   function setValue(scheme: SchemeType, newScheme: DefaultValuesSchemeType) {

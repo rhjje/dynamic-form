@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { get } from 'lodash';
 import { useFormContext } from 'react-hook-form';
 import { Form } from 'react-bootstrap';
 import './string-item.css';
@@ -29,7 +28,6 @@ export const StringItem = ({ name, description }: StringItemProps) => {
         id={description}
         {...register(name)}
       />
-      {get(errors, name) && <p>{get({}, name).message}</p>}
     </Form.Group>
   );
 };

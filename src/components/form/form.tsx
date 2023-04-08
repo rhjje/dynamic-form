@@ -1,16 +1,20 @@
 import { useForm, FormProvider } from 'react-hook-form';
+import { nopeResolver } from '@hookform/resolvers/nope';
 import { ObjectItem } from '../object-item/object-item';
 import { FORM_TEMPLATE } from '../form-template';
 import { mapFieldsForApi } from 'utils/mapFieldsForApi';
 import { DefaultValuesSchemeType } from 'types/types';
 import { setDefaultValues } from 'utils/setDefaultValues';
+import { setValidationScheme } from 'utils/setValidation';
 import { Button } from 'react-bootstrap';
 import './form.css';
 
 export const Form = () => {
   const methods = useForm<DefaultValuesSchemeType>({
     defaultValues: setDefaultValues(FORM_TEMPLATE.items),
+    resolver: nopeResolver(setValidationScheme(FORM_TEMPLATE.items)),
   });
+
   const { handleSubmit } = methods;
 
   const { documentName, items } = FORM_TEMPLATE;
