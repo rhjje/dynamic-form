@@ -50,7 +50,7 @@ export const ArrayItem = ({ description, name, rules }: ArrayItemProps) => {
           onClick={() => append({ value: '' })}
           disabled={!lastField.length}
         >
-          Добавить
+          Add
         </Button>
       )}
     </fieldset>

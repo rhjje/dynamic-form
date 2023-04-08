@@ -6,11 +6,16 @@
   width: 100%;
 }
 
-.warning {
+.string-item.warning {
   border-color: red;
 }
 
-.warning:focus {
+.string-item.warning:focus {
   border-color: red;
   box-shadow: 0px 0px 5px 5px rgba(255, 0, 0, 0.2);
+}
+
+.error {
+  font-size: 12px;
+  color: red;
 }

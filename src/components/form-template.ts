@@ -1,48 +1,48 @@
 export const FORM_TEMPLATE = {
-  documentName: 'Прекрасный документ',
+  documentName: 'Document',
   items: {
-    lastName: {
+    surname: {
       type: 'string',
-      description: 'Фамилия',
+      description: 'Surname',
       rules: { required: true, length: { min: 3, max: 50 } },
     },
     name: {
       type: 'string',
-      description: 'Имя',
+      description: 'Name',
       rules: { required: true, length: { min: 2, max: 50 } },
     },
     patronymic: {
       type: 'string',
-      description: 'Отчество',
+      description: 'Patronymic',
     },
     contacts: {
       type: 'object',
-      description: 'Контактные данные',
+      description: 'Contacts',
       items: {
         address: {
           type: 'object',
-          description: 'Адрес',
+          description: 'Address',
           items: {
             city: {
               type: 'string',
-              description: 'Город',
+              description: 'City',
               rules: { required: true },
             },
             street: {
               type: 'string',
-              description: 'Улица',
+              description: 'Street',
               rules: { required: true },
             },
             house: {
               type: 'string',
-              description: 'Дом',
+              description: 'House',
               rules: { required: true },
             },
           },
         },
         phones: {
           type: 'array',
-          description: 'Телефоны',
+          description: 'Phones',
         },
       },
     },

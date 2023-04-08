@@ -37,7 +37,7 @@ export const Form = () => {
           <ObjectItem items={items} />
         </fieldset>
         <Button className="submit-btn" variant="success" type="submit">
-          Отправить
+          Submit
         </Button>
       </form>
     </FormProvider>

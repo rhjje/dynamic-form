@@ -43,12 +43,20 @@ export const setValidationScheme = (scheme: SchemeType) => {
     for (const key in scheme) {
       if (Object.hasOwnProperty.call(scheme, key)) {
         if (
-          (scheme[key].type === FieldEnum.String ||
-            scheme[key].type === FieldEnum.Array) &&
-          (scheme[key] as StringType | ArrayType).rules
+          scheme[key].type === FieldEnum.String &&
+          (scheme[key] as StringType).rules
         ) {
           newScheme[key] = setValidationRules(
-            (scheme[key] as StringType | ArrayType).rules!,
+            (scheme[key] as StringType).rules!,
+          );
+        }
+
+        if (
+          scheme[key].type === FieldEnum.Array &&
+          (scheme[key] as ArrayType).rules
+        ) {
+          newScheme[key] = Nope.array().of(
+            setValidationRules((scheme[key] as ArrayType).rules!),
           );
         }
 
